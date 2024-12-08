@@ -9,7 +9,7 @@ const App = () => {
   const [selectedCountryTimezone, setSelectedCountryTimezone] = useState('');
 
 
-  // paises con sus nombre, vamos agruparlos en continentes, vamos a traer la informacion paises (nombre, bandera, poblacion) y conectarnos con google maps para mostrar la ubicacion de los paises
+  // paises con sus nombres, vamos agruparlos en continentes, vamos a traer la informacion paises (nombre, bandera, poblacion) y conectarnos con google maps para mostrar la ubicacion de los paises
   useEffect(() => {
     fetch('https://restcountries.com/v3.1/all')
       .then(response => response.json())

@@ -94,7 +94,7 @@ Y luego se utiliza en la presentación de la información en el browser
 
 - Crea un repositorio en GitHub con al menos 5 Commits
 - Archivo Readme.md
-- Link de Github con toda la información https://github.com/neonolb/PROY5
+- Link de Github con toda la información https://github.com/neonolb/proyecto5
 - Pantallazo de la solución
 
 

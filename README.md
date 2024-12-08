@@ -1,70 +1,102 @@
-# Getting Started with Create React App aa
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+![Banner](https://github.com/neonolb/BCUDD_NH/blob/main/banner.png) 
+## PROYECTO 5: Aplicación WEB con React
+Botcamper : Nolberto Hernández A. -  Cohort 14
 
-In the project directory, you can run:
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Que se Pide?
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Construir una aplicación web con React, que permita consumir datos por medio de una API.
 
-### `npm test`
+- Conectar con una API para obtener datos
+- Mostrar los datos en una interfaz de usuario
+- Permitir alguna interacción del usuario (por ejemplo, mediante botones o formularios)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Requisitos
 
-### `npm run build`
+- Uso de vite para la generación del proyecto
+- Crear componentes funcionales
+- Utilizar una API pública y mostrar los datos obtenidos en tu interfaz de usuario
+- Uso de Hooks (mínimo useEffect para los procesos asíncronos)
+- Implementar rutas en tu aplicación con React Router
+- Manejar errores de renderizado con Error Boundaries
+- Implementación CSS a través de un framework (TailwindCSS, MUI, Bootstrap)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Solución explicada paso a paso
+1.Se instalan todas las librerias e dependencias del proyecto
+evidencia de la instalación archivo package.json
 
-### `npm run eject`
+![Banner](https://github.com/neonolb/PROY5/blob/main/img/evidencia_json.jpg) 
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Se selecciona la API a consumir, en este caso se usa una de continentes y paises:
+```scss
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+useEffect (() => {
+    fetch('https://restcountries.com/v3.1/all')
+    .then(response => response.json())
+    .then(data =>  {
+        setCountries(data);
+        groupByContinents(data);
+   });
+    }, []);
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```
 
-## Learn More
+3. Como framework se utiliza Bootstrap: Instalando el CDN en index de la APP
+```scss
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+4. Luego se ingresan componentes del framework en partes de código para la muestra de los continentes y paises en pantalla:
+```scss
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+Y luego se utiliza en la presentación de la información en el browser
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+  {Object.keys(continents).map(continent => (
+                    <button key={continent} onClick={() => handleContinentClick(continent)}
+                    className='btn btn-success'>
+                    {continent}
+                    </button>
+                ))}     
+    </div>
+    {SelectedContinent && (            
+    <div>
+        <h2>{SelectedContinent}</h2>
+        <ul className='list-group'>
+            {continents[SelectedContinent].map(country => (
+                <li key={country.cca3} className='list-group-item'>
+                <button onClick={() => handleCountryClick(country)} className='btn btn-primary'>
+                    {country.name.common}
+                    </button>
+                </li>
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+5. Se Ejecuta el código con VITE:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- Como evidencia de la ejecución se agregan 2 pantallazo de la APP Web.
 
-### Deployment
+![Banner](https://github.com/neonolb/PROY5/blob/main/img/pantalla_app.jpg) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+![Banner](https://github.com/neonolb/PROY5/blob/main/img/pantalla_2_app.jpg) 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Entregables
+
+- Crea un repositorio en GitHub con al menos 5 Commits
+- Archivo Readme.md
+- Link de Github con toda la información https://github.com/neonolb/PROY5
+- Pantallazo de la solución
+
+
+
+
